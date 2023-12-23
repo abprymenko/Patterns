@@ -11,13 +11,13 @@
     internal class TeamLeader : IInvoker
     {
         #region Private : Fields
-        protected readonly IStartCommand? _stopCommand;
-        protected readonly IStopCommand? _startCommand;
+        protected readonly IStartCommand? _startCommand;
+        protected readonly IStopCommand? _stopCommand;
         #endregion
 
         #region Public : Constructor
-        public TeamLeader(IStartCommand? stopCommand,
-                          IStopCommand? startCommand)
+        public TeamLeader(IStartCommand? startCommand,
+                          IStopCommand? stopCommand)
         {
             _startCommand = startCommand;
             _stopCommand = stopCommand;
@@ -25,13 +25,33 @@
         #endregion
 
         #region Public : Methods
-        public virtual void AssignmentTask()
+        public virtual async Task AssignmentTask()
         {
-            _startCommand?.Execute();
+            try
+            {
+                if(_startCommand is null)
+                    throw new ArgumentNullException(nameof(_startCommand));
+                await _startCommand.Execute();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
-        public virtual void ApproveTask()
+        public virtual async Task ApproveTask()
         {
-            _stopCommand?.Execute();
+            try
+            {
+                if(_stopCommand is null)
+                    throw new ArgumentNullException(nameof(_stopCommand));
+                await _stopCommand.Execute();
+                Console.WriteLine("Approving the task...");
+                Thread.Sleep(TimeSpan.FromMinutes(1));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         #endregion
     }

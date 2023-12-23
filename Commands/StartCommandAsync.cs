@@ -8,16 +8,23 @@
     /// <summary>
     /// Concrete implementation of the command, implements the Execute() method.
     /// </summary>
-    internal class StartCommand : BaseCommand, IStartCommand
+    internal class StartCommandAsync : BaseCommandAsync, IStartCommand
     {
         #region Public : Constructor
-        public StartCommand(IReceiver receiver) : base(receiver){}
+        public StartCommandAsync(IReceiver receiver) : base(receiver){}
         #endregion
 
         #region Public : Methods
-        public virtual void Execute()
+        public virtual async Task Execute()
         {
-            _receiver.StartTask();
+            try
+            {
+                await _receiver.StartTask();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         #endregion
     }

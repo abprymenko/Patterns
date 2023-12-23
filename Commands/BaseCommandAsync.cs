@@ -5,14 +5,14 @@
     #endregion
 
     #region BaseCommand class
-    internal abstract class BaseCommand
+    internal abstract class BaseCommandAsync
     {
         #region Private : Fields
         protected readonly IReceiver _receiver;
         #endregion
 
         #region Protected : Constructor
-        protected BaseCommand(IReceiver receiver)
+        protected BaseCommandAsync(IReceiver receiver)
         {
             _receiver = receiver;
         }

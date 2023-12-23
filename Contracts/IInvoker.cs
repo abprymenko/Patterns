@@ -2,7 +2,7 @@
 {
     public interface IInvoker
     {
-        void AssignmentTask();
-        void ApproveTask();
+        Task AssignmentTask();
+        Task ApproveTask();
     }
 }

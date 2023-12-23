@@ -10,14 +10,24 @@
     /// </summary>
     internal class Developer : IReceiver
     {
-        public void StartTask()
+        public Task StartTask()
         {
-            Console.WriteLine("The programmer has started developing the program"); ;
+            try
+            {
+                Console.WriteLine("The programmer has started to do task");
+                Console.WriteLine("Completing the task...");
+                Thread.Sleep(TimeSpan.FromMinutes(1));
+                return Task.CompletedTask;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void StopTask()
         {
-            Console.WriteLine("The programmer has finished developing the program"); ;
+            Console.WriteLine("The programmer has finished to do task");
         }
     }
     #endregion

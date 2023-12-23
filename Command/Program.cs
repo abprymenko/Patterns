@@ -1,7 +1,6 @@
 ﻿namespace Command
 {
     #region Usings
-    using BuisnessObjects.Enums;
     using Castle.Windsor;
     using Command.Managers;
     using Contracts;
@@ -11,31 +10,60 @@
     internal class Program
     {
         #region Private : Fields
-        private static IWindsorContainer? _container = ContainerManager.Container;
-        private static IInvoker? _invoker;
+        private static readonly IWindsorContainer? _container;
+        private static readonly IInvoker? _teamLeader;
+        #endregion
+
+        #region Constructor
+        static Program()
+        {
+            var isInterwiev = false;
+            if (isInterwiev)
+            {
+                _container = ContainerManager.Container;
+                _teamLeader = _container?.Resolve<IInvoker>();
+            }
+            else
+            {
+                Greeting();
+            }
+        }
         #endregion
 
         #region Main
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            _invoker = _container?.Resolve<IInvoker>();
-            bool isState = false;
-            ProcessState state = default;
-            while (!isState)
+            try
             {
-                Console.WriteLine("Enter the command\n[Stop - 0]\n[Start - 1]:");
-                isState = Enum.TryParse(Console.ReadLine(), out state);
+                await Sprint();
             }
-            switch (state)
+            catch (Exception ex)
             {
-                case ProcessState.Start:
-                    _invoker?.AssignmentTask();
-                    break;
-                default:
-                case ProcessState.Stop:
-                    _invoker?.ApproveTask();
-                    break;
+                await Console.Out.WriteLineAsync(ex.Message);
             }
+        }
+        #endregion
+
+        #region Private : Methods
+        private static async Task Sprint()
+        {
+            try
+            {
+                Console.WriteLine("The sprint has started!");
+                if (_teamLeader is null)
+                    throw new ArgumentNullException(nameof(_teamLeader));
+                await _teamLeader.AssignmentTask();
+                await Console.Out.WriteLineAsync("Do anything else...");
+                await _teamLeader.ApproveTask();
+                Console.WriteLine("The sprint has finished!");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        private static void Greeting()
+        {
             Console.WriteLine("Hello, World!");
             Console.WriteLine("We can talk about dependency injection in this project directly in the interview.");
             Console.WriteLine("Please contact me if you are interested.");

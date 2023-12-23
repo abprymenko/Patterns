@@ -8,16 +8,24 @@
     /// <summary>
     /// Concrete implementation of the command, implements the Execute() method.
     /// </summary>
-    internal class StopCommand : BaseCommand, IStopCommand
+    internal class StopCommandAsync : BaseCommandAsync, IStopCommand
     {
         #region Constructor : Public
-        public StopCommand(IReceiver receiver) : base(receiver) {}
+        public StopCommandAsync(IReceiver receiver) : base(receiver) {}
         #endregion
 
         #region Methods : Public
-        public void Execute()
+        public Task Execute()
         {
-            _receiver.StopTask();
+            try
+            {
+                _receiver.StopTask();
+                return Task.CompletedTask;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         #endregion
     }

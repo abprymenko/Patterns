@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuisnessObjects\BuisnessObjects.csproj" />
     <ProjectReference Include="..\Commands\Commands.csproj" />
     <ProjectReference Include="..\Invoker\Invokers.csproj" />
     <ProjectReference Include="..\Receiver\Receivers.csproj" />
