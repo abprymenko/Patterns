@@ -2,6 +2,7 @@
 {
     #region Usings
     using Contracts;
+    using Contracts.Commands.Async;
     #endregion
 
     #region TeamLeader class
@@ -11,16 +12,16 @@
     internal class TeamLeader : IInvoker
     {
         #region Private : Fields
-        protected readonly IStartCommand? _startCommand;
-        protected readonly IStopCommand? _stopCommand;
+        protected readonly IStartCommandAsync? _startCommandAsync;
+        protected readonly IApproveCommandAsync? _approveCommandAsync;
         #endregion
 
         #region Public : Constructor
-        public TeamLeader(IStartCommand? startCommand,
-                          IStopCommand? stopCommand)
+        public TeamLeader(IStartCommandAsync? startCommandAsync,
+                          IApproveCommandAsync? approveCommandAsync)
         {
-            _startCommand = startCommand;
-            _stopCommand = stopCommand;
+            _startCommandAsync = startCommandAsync;
+            _approveCommandAsync = approveCommandAsync;
         }
         #endregion
 
@@ -29,9 +30,9 @@
         {
             try
             {
-                if(_startCommand is null)
-                    throw new ArgumentNullException(nameof(_startCommand));
-                await _startCommand.Execute();
+                if(_startCommandAsync is null)
+                    throw new ArgumentNullException(nameof(_startCommandAsync));
+                await _startCommandAsync.Execute();
             }
             catch (Exception)
             {
@@ -42,11 +43,9 @@
         {
             try
             {
-                if(_stopCommand is null)
-                    throw new ArgumentNullException(nameof(_stopCommand));
-                await _stopCommand.Execute();
-                Console.WriteLine("Approving the task...");
-                Thread.Sleep(TimeSpan.FromMinutes(1));
+                if(_approveCommandAsync is null)
+                    throw new ArgumentNullException(nameof(_approveCommandAsync));
+                await _approveCommandAsync.Execute();
             }
             catch (Exception)
             {

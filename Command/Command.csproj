@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Commands\Commands.csproj" />
+    <ProjectReference Include="..\Extensions\Extensions.csproj" />
     <ProjectReference Include="..\Invoker\Invokers.csproj" />
     <ProjectReference Include="..\Receiver\Receivers.csproj" />
   </ItemGroup>

@@ -1,17 +1,18 @@
-﻿namespace Commands
+﻿namespace Commands.Async
 {
     #region Usings
     using Contracts;
+    using Contracts.Commands.Async;
     #endregion
 
-    #region StartCommand class
+    #region StartCommandAsync
     /// <summary>
     /// Concrete implementation of the command, implements the Execute() method.
     /// </summary>
-    internal class StartCommandAsync : BaseCommandAsync, IStartCommand
+    internal class StartCommandAsync : BaseCommand, IStartCommandAsync
     {
         #region Public : Constructor
-        public StartCommandAsync(IReceiver receiver) : base(receiver){}
+        public StartCommandAsync(IReceiver receiver) : base(receiver) { }
         #endregion
 
         #region Public : Methods
@@ -19,7 +20,7 @@
         {
             try
             {
-                await _receiver.StartTask();
+                await _receiver.DoTask();
             }
             catch (Exception)
             {

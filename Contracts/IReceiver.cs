@@ -2,7 +2,7 @@
 {
     public interface IReceiver
     {
-        Task StartTask();
-        void StopTask();
+        Task DoTask();
+        Task FixBug();
     }
 }

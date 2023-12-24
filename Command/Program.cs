@@ -4,6 +4,7 @@
     using Castle.Windsor;
     using Command.Managers;
     using Contracts;
+    using Extensions;
     #endregion
 
     #region Program class
@@ -12,30 +13,34 @@
         #region Private : Fields
         private static readonly IWindsorContainer? _container;
         private static readonly IInvoker? _teamLeader;
+        private static readonly bool _isInterwiev;
         #endregion
 
         #region Constructor
         static Program()
         {
-            var isInterwiev = false;
-            if (isInterwiev)
+            _isInterwiev = _isInterwiev.CheckAnswer("Is it interview?[Y/N]: ");
+            if (_isInterwiev)
             {
                 _container = ContainerManager.Container;
                 _teamLeader = _container?.Resolve<IInvoker>();
-            }
-            else
-            {
-                Greeting();
             }
         }
         #endregion
 
         #region Main
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             try
             {
-                await Sprint();
+                if (_isInterwiev)
+                {
+                    await Sprint();
+                }
+                else
+                {
+                    Greeting();
+                }
             }
             catch (Exception ex)
             {
@@ -53,7 +58,6 @@
                 if (_teamLeader is null)
                     throw new ArgumentNullException(nameof(_teamLeader));
                 await _teamLeader.AssignmentTask();
-                await Console.Out.WriteLineAsync("Do anything else...");
                 await _teamLeader.ApproveTask();
                 Console.WriteLine("The sprint has finished!");
             }
