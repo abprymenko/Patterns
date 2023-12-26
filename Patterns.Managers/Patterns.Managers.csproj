@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Patterns.Contracts\Patterns.Contracts.csproj" />
+    <ProjectReference Include="..\Patterns.Extensions\Patterns.Extensions.csproj" />
+  </ItemGroup>
+
+</Project>
