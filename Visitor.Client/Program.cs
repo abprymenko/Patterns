@@ -45,15 +45,8 @@
             }
             catch (Exception ex)
             {
-                LogError(ex.Message);
+                Console.WriteLine(ex.Message);
             }
-        }
-        #endregion
-
-        #region Private : Methods
-        static void LogError(string message)
-        {
-            Console.WriteLine(message);
         }
         #endregion
     }
