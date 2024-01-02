@@ -54,12 +54,12 @@
         {
             try
             {
-                Console.WriteLine("The sprint has started!");
+                await Console.Out.WriteLineAsync("The sprint has started!");
                 if (_teamLeader is null)
                     throw new ArgumentNullException(nameof(_teamLeader));
                 await _teamLeader.AssignmentTask();
                 await _teamLeader.ApproveTask();
-                Console.WriteLine("The sprint has finished!");
+                await Console.Out.WriteLineAsync("The sprint has finished!");
             }
             catch (Exception)
             {

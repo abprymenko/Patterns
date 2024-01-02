@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Command.Client", "Command.Client\Command.Client.csproj", "{322A9A86-A417-4365-A646-64589E1F0F93}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PCommand", "PCommand", "{124892BB-808D-492A-AE9E-DA9885BC13B7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PVisitor", "PVisitor", "{26874AB3-3248-43F8-94D9-D64735C8A42B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Visitor.Client", "Visitor.Client\Visitor.Client.csproj", "{9CA05DFC-A20D-4C05-B62A-8F89DE4AA045}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Abstractions", "Abstractions", "{8156985B-D703-4212-A09F-3680F698C941}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Patterns.Contracts", "Patterns.Contracts\Patterns.Contracts.csproj", "{AE308A5D-B0CE-457C-91EB-8F6A61F44452}"
@@ -19,15 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{03ACBF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Patterns.BusinessObjects", "Patterns.BusinessObjects\Patterns.BusinessObjects.csproj", "{F2F0531C-78F4-4AE7-95C6-9B8C58D54A34}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Patterns.Extensions", "Patterns.Extensions\Patterns.Extensions.csproj", "{2D50D3F5-1AD3-4572-B53C-EBB804BFF711}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Managers", "Managers", "{444BD755-4B63-418E-9E56-CD393DF8F94F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C32C700A-8E2F-4918-9A57-E3A6DB072499}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Patterns.Extenssions", "Patterns.Extensions\Patterns.Extenssions.csproj", "{2D50D3F5-1AD3-4572-B53C-EBB804BFF711}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Patterns.Services", "Patterns.Services\Patterns.Services.csproj", "{0E20723F-61F9-44A5-9018-68E355249FCB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Patterns.Managers", "Patterns.Managers\Patterns.Managers.csproj", "{1E70B22D-3E6E-463C-B29E-CE8828DFFCA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{319CAD96-57F6-41B3-A362-6A3BA15B67D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{322A9A86-A417-4365-A646-64589E1F0F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{322A9A86-A417-4365-A646-64589E1F0F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{322A9A86-A417-4365-A646-64589E1F0F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{322A9A86-A417-4365-A646-64589E1F0F93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CA05DFC-A20D-4C05-B62A-8F89DE4AA045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CA05DFC-A20D-4C05-B62A-8F89DE4AA045}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CA05DFC-A20D-4C05-B62A-8F89DE4AA045}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CA05DFC-A20D-4C05-B62A-8F89DE4AA045}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AE308A5D-B0CE-457C-91EB-8F6A61F44452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AE308A5D-B0CE-457C-91EB-8F6A61F44452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE308A5D-B0CE-457C-91EB-8F6A61F44452}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -68,11 +54,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{322A9A86-A417-4365-A646-64589E1F0F93} = {124892BB-808D-492A-AE9E-DA9885BC13B7}
-		{9CA05DFC-A20D-4C05-B62A-8F89DE4AA045} = {26874AB3-3248-43F8-94D9-D64735C8A42B}
 		{AE308A5D-B0CE-457C-91EB-8F6A61F44452} = {8156985B-D703-4212-A09F-3680F698C941}
 		{F2F0531C-78F4-4AE7-95C6-9B8C58D54A34} = {03ACBFB3-E1C1-481C-A9D2-42337166CBBD}
-		{2D50D3F5-1AD3-4572-B53C-EBB804BFF711} = {03ACBFB3-E1C1-481C-A9D2-42337166CBBD}
 		{0E20723F-61F9-44A5-9018-68E355249FCB} = {C32C700A-8E2F-4918-9A57-E3A6DB072499}
 		{1E70B22D-3E6E-463C-B29E-CE8828DFFCA8} = {444BD755-4B63-418E-9E56-CD393DF8F94F}
 	EndGlobalSection

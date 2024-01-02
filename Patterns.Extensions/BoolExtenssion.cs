@@ -1,6 +1,6 @@
 ﻿namespace Patterns.Extensions
 {
-    public static class BoolExtensions
+    public static class BoolExtenssion
     {
         public static bool CheckAnswer(this bool _, string question)
         {

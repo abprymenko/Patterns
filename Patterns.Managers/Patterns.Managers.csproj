@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Patterns.Contracts\Patterns.Contracts.csproj" />
-    <ProjectReference Include="..\Patterns.Extensions\Patterns.Extensions.csproj" />
+    <ProjectReference Include="..\Patterns.Extensions\Patterns.Extenssions.csproj" />
   </ItemGroup>
 
 </Project>

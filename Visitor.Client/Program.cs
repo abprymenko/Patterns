@@ -3,8 +3,8 @@
     #region Usings
     using Visitor.Client.Managers;
     using Patterns.Contracts.Services.Finances;
-    using Castle.Windsor;
     using Patterns.Contracts.Enums;
+    using Castle.Windsor;
     #endregion
 
     #region Program
